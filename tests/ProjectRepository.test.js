@@ -61,7 +61,7 @@
         return expect(getStub).to.have.been.called;
       });
     });
-    return describe("showFile()", function() {
+    describe("showFile()", function() {
       return it("should use GET verb", function() {
         var getStub;
         getStub = sinon.stub(repository, "get");
@@ -69,6 +69,15 @@
           file_path: "test",
           ref: "test"
         });
+        getStub.restore();
+        return expect(getStub).to.have.been.called;
+      });
+    });
+    return describe("compare()", function() {
+      return it("should use GET verb", function() {
+        var getStub;
+        getStub = sinon.stub(repository, "get");
+        repository.compare(1, 'v1.0.0', 'v2.0.0');
         getStub.restore();
         return expect(getStub).to.have.been.called;
       });
